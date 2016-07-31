@@ -1,0 +1,71 @@
+Backup::Datto
+
+This set of modules is used to gather and manipulate statistics from Datto's XML API.
+
+Originally, the purpose was to feed this data into other monitoring tools and as a result
+the methods in Backup::Datto::Collection are geared towards the data that I was trying
+to pull.  However, the idea is to add more functionality to future version numbers.
+
+There are several known limitations with this set of modules. Of particular importance is
+that the time comparison functions only correctly handle EST time (it actually is that we
+don't check time at all and assume EST.  If all of your appliances are in the same
+time zone, the comparisons should still be valid).
+
+The other limitation is that we do not currently handle NAS shares correctly.  This is planned
+for the next release.
+
+Feel free to send updates, considering how early in development this is.
+
+The public interface will remain in future versions.  Most of the private methods probably will, too
+but that is not guaranteed.
+
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Makefile.PL
+	make
+	make test
+	make install
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc Backup::Datto
+
+You can also look for information at:
+
+    RT, CPAN's request tracker (report bugs here)
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Backup::Datto
+
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/Backup::Datto
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/Backup::Datto
+
+    Search CPAN
+        http://search.cpan.org/dist/Backup::Datto/
+
+
+LICENSE AND COPYRIGHT
+
+Copyright (C) 2014 Matthew Topper
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2 dated June, 1991 or at your option
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+A copy of the GNU General Public License is available in the source tree;
+if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+

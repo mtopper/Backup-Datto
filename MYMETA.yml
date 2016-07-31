@@ -1,0 +1,27 @@
+---
+abstract: Collection of modules to report data from Datto backup devices.
+author:
+  - 'Matthew Topper <topperm9@gmail.com>'
+build_requires:
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 6.72, CPAN::Meta::Converter version 2.132140'
+license: gpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Backup-Datto
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  LWP: 0
+  Time::Interval: 1.22
+  Time::Piece: 1.15
+  Time::Seconds: 1.15
+  XML::SIMPLE: 0
+  perl: 5.006
+version: v0.1.1

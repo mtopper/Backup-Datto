@@ -1,0 +1,14 @@
+Revision history for Backup::Datto
+
+0.1.2
+        Fixed bug in testing whether any local backups have completed
+        Documented that never completing a local backup is considered failed.
+            This may be changed in a future release.
+        
+            
+
+0.1.1  
+        Added LWP to the list of dependencies
+
+0.1    Date/time
+        First version, released on an unsuspecting world.
