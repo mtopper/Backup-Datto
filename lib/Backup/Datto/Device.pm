@@ -46,22 +46,34 @@ my $STRING_KERNEL_VERSION  = 'KernelVersion';
 my $STRING_BIOS_VERSION    = 'BIOSVersion';
 my $STRING_VBOX_VERSION    = 'VBoxVersion';
 
+# Explicitly define true/false rather than 0 or not 0
+my $TRUE  = 1;
+my $FALSE = 0;
+
 sub
 new
 {
     my $class = shift;
     
     my $self  = {
-        $STRING_SERIAL     => undef,
-        $STRING_HOSTNAME   => undef,
-        $STRING_MODEL      => undef,
-        $STRING_FREESPACE  => undef,
-        $STRING_USEDSPACE  => undef,
-		$STRING_UPTIME     => undef,
-        $STRING_INTERNALIP => undef,
-        $STRING_LAST_SEEN  => undef,
-        $STRING_TXLIMIT    => undef,
-        $STRING_AGENTS     => undef
+        $STRING_SERIAL          => undef,
+        $STRING_HOSTNAME        => undef,
+        $STRING_MODEL           => undef,
+        $STRING_FREESPACE       => undef,
+        $STRING_USEDSPACE       => undef,
+		$STRING_UPTIME          => undef,
+        $STRING_INTERNALIP      => undef,
+        $STRING_LAST_SEEN       => undef,
+        $STRING_TXLIMIT         => undef,
+        $STRING_AGENTS          => undef,
+        $STRING_SERVICE_EXPIRE  => undef,
+        $STRING_WARRANTY_EXPIRE => undef,
+        $STRING_HIDDEN          => undef,
+        $STRING_LOAD_AVERAGE    => undef,
+        $STRING_ZFS_VERSION     => undef,
+        $STRING_VBOX_VERSION    => undef,
+        $STRING_KERNEL_VERSION  => undef,
+        $STRING_BIOS_VERSION    => undef
     };
 	
 	bless( $self, $class );
@@ -359,12 +371,24 @@ _priv_set_warranty_expiration
 }
 
 # Sets whether a device is hidden
+# Note that this module will ALWAYS return either TRUE or FALSE
+# regardless of the internal values here.  This is because Agent objects
+# are normally not created outside of a Collection (which pulls from the XML API)
 sub
 _priv_set_hidden_status
 {
     my $self = shift;
     
-    $self->{ $STRING_HIDDEN } = shift;
+    my $value = shift;
+    
+    if( $value == $TRUE )
+    {
+        $self->{ $STRING_HIDDEN } = $TRUE;
+    }
+    else
+    {        
+        $self->{ $STRING_HIDDEN } = $FALSE;
+    }
 }
 
 # Sets the device's load average
