@@ -16,6 +16,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 
+package Backup::Datto;
+
 # Boilerplate
 use warnings;
 use strict;
@@ -23,6 +25,11 @@ our $VERSION = "0.1.1";
 
 use warnings;
 use strict;
+
+use constant TRUE  => 1;
+use constant FALSE => 0;
+
+1;
 
 __END__
 
@@ -78,5 +85,3 @@ as published by the Free Software Foundation; either version 2
 of the License, or (at your option) any later version.
 
 =cut
-
-1;
