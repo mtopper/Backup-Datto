@@ -84,6 +84,7 @@ my $XML_BACKUP_VOLUME   = 'BackupVolume';
 my $XML_CONTENT         = 'content';
 my $XML_TYPE            = 'type';
 my $XML_DEVICE          = 'Device';
+my $XML_HIDDEN          = 'IsHidden';
 
 # These strings are used to keep all hashes internally consistent.
 my $STRING_AGENTS         = 'Agents';
@@ -104,8 +105,8 @@ my $STRING_USED_HASH      = 'UsedHash';
 sub
 new
 {
-    my $class   = shift;
-    my $api_key = shift;
+    my $class          = shift;
+    my $api_key        = shift;
     
     my $self = {
         $STRING_DATTOS         => undef,
@@ -332,6 +333,12 @@ _priv_get_all_dattos
     foreach my $device ( @{ $config->{ $XML_DEVICE } } )
     {
         my $device_object = new Backup::Datto::Device();
+        
+        # Check if it's something that is hidden in the portal
+        if( $device->{ $XML_HIDDEN } != 0 )
+        {
+            next;
+        }
         
         # Note that these _priv functions are private.  Outside code should
         # call them at its own risk
